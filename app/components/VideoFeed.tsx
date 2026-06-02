@@ -16,11 +16,8 @@ export default function VideoFeed({ videos }: VideoFeedProps) {
         scrollbar-hide
         bg-black
         flex-1
+        smooth-scroll
       "
-      style={{
-        scrollBehavior: 'smooth',
-        scrollSnapType: 'y mandatory',
-      }}
       aria-label="Video feed"
     >
       {videos.map((video) => (

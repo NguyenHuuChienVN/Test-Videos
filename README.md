@@ -1,3 +1,5 @@
+# My Video App
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -14,23 +16,19 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Play/Pause Video khi cuộn trang
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Ứng dụng sử dụng **IntersectionObserver** để tự động điều khiển trạng thái phát video dựa trên vị trí của video trong viewport.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Cách hoạt động
 
-## Learn More
+* Khi video **xuất hiện trong viewport (≥70%)**:
+  * Video sẽ **tự động phát (play)**
+* Khi video **ra khỏi viewport**:
+  * Video sẽ **tạm dừng (pause)**
 
-To learn more about Next.js, take a look at the following resources:
+### Logic chính
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Sử dụng `IntersectionObserver` để theo dõi từng video
+* Thiết lập `threshold: 0.7` để đảm bảo video phải hiển thị đủ lớn mới phát
+* Dùng `rootMargin` để preload video trước khi người dùng cuộn tới
