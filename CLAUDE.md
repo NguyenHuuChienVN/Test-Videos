@@ -1,1 +1,3 @@
+# Claude Preferences
+
 @AGENTS.md
