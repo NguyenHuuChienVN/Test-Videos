@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import { Video } from "@/app/types/video";
 
 const mockVideos: Video[] = [
@@ -25,6 +24,6 @@ const mockVideos: Video[] = [
     }
 ];
 
-export async function GET() {
-    return NextResponse.json(mockVideos);
+export async function getVideos(): Promise<Video[]> {
+    return mockVideos;
 }
